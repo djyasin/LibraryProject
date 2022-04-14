@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include ('debug_toolbar.urls')),
     path('add_term/', terms_views.add_term, name='add_term'),
+    path('term_detail/<int:pk>', terms_views.term_detail, name="term_detail")
 ]

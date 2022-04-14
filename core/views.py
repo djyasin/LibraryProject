@@ -3,6 +3,12 @@ from .models import Term, User
 from django.contrib.auth.forms import UserCreationForm
 from .forms import TermForm
 
+
+def term_detail(request, pk):
+    term = get_object_or_404(Term, pk=pk)
+
+    return render(request, "term_detail.html", {"term": term})
+
 def add_term(request):
     if request.method == "POST":
         form = TermForm(data=request.POST)
