@@ -3,5 +3,6 @@
 <h4>{{ term.provenance }}</h4>
 <h4><a href="{% url 'term_library' %}"> Term Library</a></h4>
 <p><a href="{% url 'edit_term' pk=term.pk %}"> Edit Term</a></p>
+<p><a href="{% url 'delete_term' pk=term.pk %}"> Delete Term</a></p>
 {% endblock %}
 

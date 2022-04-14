@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Delete Term</h1>
+
+<div>
+    <form action="{% url 'delete_term' pk=term.pk %}" method="POST">
+    {% csrf_token %}
+    <p>Are you sure you want to delete <span class="b">{{ term.term }}</span>?</p>
+    <div>
+        <button type="submit">Delete Term</button><br />
+        <a href="{% url 'term_detail' pk=term.pk %}"> Cancel</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}
