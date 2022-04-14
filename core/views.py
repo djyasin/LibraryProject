@@ -33,3 +33,15 @@ def term_library(request):
             "terms": terms,
         },
     )
+
+def edit_term(request, pk):
+    term = get_object_or_404(Term, pk=pk)
+    if request.method == "GET":
+        form = TermForm(instance=term)
+    else:
+        form = TermForm(data=request.POST, instance=term)
+        if form.is_valid():
+            form.save()
+            return redirect("term_detail", pk=term.pk)
+
+    return render(request, "edit_term.html", {"form": form, "term": term, "pk": pk})
