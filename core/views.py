@@ -3,6 +3,17 @@ from .models import Term, User
 from django.contrib.auth.forms import UserCreationForm
 from .forms import TermForm
 
+def home(request):
+    user = request.user
+    terms = Term.objects.filter()
+
+    return render(
+        request,
+        "home.html",
+        {
+            "terms": terms,
+        },
+    )
 
 def term_detail(request, pk):
     term = get_object_or_404(Term, pk=pk)

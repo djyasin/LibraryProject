@@ -22,6 +22,7 @@ from core import views as terms_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('__debug__/', include ('debug_toolbar.urls')),
+    path("", terms_views.home, name="home"),
     path('add_term/', terms_views.add_term, name='add_term'),
     path('term_detail/<int:pk>', terms_views.term_detail, name="term_detail"),
     path('term_library/', terms_views.term_library, name='term_library'),
