@@ -45,3 +45,10 @@ def edit_term(request, pk):
             return redirect("term_detail", pk=term.pk)
 
     return render(request, "edit_term.html", {"form": form, "term": term, "pk": pk})
+
+def delete_term(request, pk):
+    term = get_object_or_404(Term, pk=pk)
+    if request.method == "POST":
+        term.delete()
+        return redirect(to="term_library")
+    return render(request, "delete_term.html", {"term": term})
