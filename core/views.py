@@ -21,3 +21,15 @@ def add_term(request):
         form = TermForm()
 
     return render(request, "add_term.html", {"form": form})
+
+def term_library(request):
+    user = request.user
+    terms = Term.objects.filter()
+
+    return render(
+        request,
+        "term_library.html",
+        {
+            "terms": terms,
+        },
+    )
