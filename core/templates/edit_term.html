@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Edit Term</h1>
+
+<div>
+  <form action="{% url 'edit_term' pk=term.pk %}" method="POST">
+    {% csrf_token %}
+    <p>Controlled Vocabulary Term: {{ form.library_of_congress }}</p>
+    <p>Preferred Term: {{ form.popular_term }}</p>
+    <p>Provenance: {{ form.provenance }}</p>
+    <div>
+      <button type="submit">Submit Changes</button>
+    </div>
+  </form>
+</div>
+{% endblock content%}
+

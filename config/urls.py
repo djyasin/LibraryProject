@@ -25,4 +25,5 @@ urlpatterns = [
     path('add_term/', terms_views.add_term, name='add_term'),
     path('term_detail/<int:pk>', terms_views.term_detail, name="term_detail"),
     path('term_library/', terms_views.term_library, name='term_library'),
+    path("edit_term/<int:pk>/", terms_views.edit_term, name="edit_term"),
 ]
