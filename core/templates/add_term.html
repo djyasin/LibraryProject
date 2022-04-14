@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+
+<h1>Add a Term</h1>
+<div class="form">
+  <form action="{% url 'add_term' %}" method="POST">
+    <!-- change query to single , for records need .record.all -->
+    {% csrf_token %}
+    <p>Controlled Vocabulary Term: {{ form.library_of_congress }}</p>
+    <p>Preferred Term: {{ form.popular_term }}</p>
+    <p>Provenance: {{ form.provenance }}</p>
+    <input type="submit" value="Submit" />
+  </form>
+  {% endblock content %}
+</div>
