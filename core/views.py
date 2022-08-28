@@ -68,3 +68,4 @@ def delete_term(request, pk):
 class search_term(ListView):
     model = Term
     template_name = 'search_results.html'
+    
