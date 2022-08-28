@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Term, User
 from django.contrib.auth.forms import UserCreationForm
 from .forms import TermForm
+from django.views.generic import TemplateView, ListView
 
 def home(request):
     user = request.user
@@ -63,3 +64,7 @@ def delete_term(request, pk):
         term.delete()
         return redirect(to="term_library")
     return render(request, "delete_term.html", {"term": term})
+
+class search_term(ListView):
+    model = Term
+    template_name = 'search_results.html'
