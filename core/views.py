@@ -3,6 +3,7 @@ from .models import Term, User
 from django.contrib.auth.forms import UserCreationForm
 from .forms import TermForm
 from django.views.generic import TemplateView, ListView
+from django.db.models import query
 
 def home(request):
     user = request.user
@@ -68,4 +69,8 @@ def delete_term(request, pk):
 class search_term(ListView):
     model = Term
     template_name = 'search_results.html'
-    
+
+    def get_queryset(self):  # new
+        query = self.request.GET.get("q")
+        object_list = Term.objects.filter(provenance=query)
+        return object_list
