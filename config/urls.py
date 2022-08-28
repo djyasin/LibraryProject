@@ -28,4 +28,5 @@ urlpatterns = [
     path('term_library/', terms_views.term_library, name='term_library'),
     path("edit_term/<int:pk>/", terms_views.edit_term, name="edit_term"),
     path("delete_term/<int:pk>/", terms_views.delete_term, name="delete_term"),
+    path("search/", terms_views.search_term.as_view(), name="search_results")
 ]

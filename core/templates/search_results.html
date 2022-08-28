@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+
+<h1>Search Results</h1>
+<ul>
+    {% for term in object_list %}
+      <li>
+      <p> Library of Congress Term: {{ term.library_of_congress }} </p>  
+       <p>Popular Term: {{ term.popular_term }}</p>
+       <p>Term Provenance: {{ term.provenance }}</p>
+       <p>Date Term Entered: {{ term.created_at }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+  {% endblock content %}

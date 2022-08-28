@@ -1,5 +1,31 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'static/css.css' %}">
+    
+    
+        <title>Library Project</title>
+    </head>
+    
+    <body>
+        <header>
+            <section class="hero">
+                <section class="hero is-primary ">
+                <div class="hero-body">
+                        <div class="container">
+            <div id="title">
+                <h1 class="title">Library Project</h1>
+                <li><a href="{% url 'home' %}">Home</a></li>
+            </section>
+            </div>
+            </div>
+        </section>
+        </header>
     {% block content %}
     {% endblock%}
+</body>
+</html>

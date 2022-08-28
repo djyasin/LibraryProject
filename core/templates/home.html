@@ -4,6 +4,12 @@
 <body>
 <h4><a href="{% url 'add_term' %}"> Add a Term</a></h4>
 <h4><a href="{% url 'term_library' %}"> View Library</a></h4>
+<div>
+    Search Provenance:
+    <form action="{% url 'search_results' %}" method="get">
+        <input name="q" type="text" placeholder="Search...">
+      </form></div>
+
 </body>
 
 
