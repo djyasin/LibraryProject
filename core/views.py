@@ -3,7 +3,7 @@ from .models import Term, User
 from django.contrib.auth.forms import UserCreationForm
 from .forms import TermForm
 from django.views.generic import TemplateView, ListView
-from django.db.models import query
+from django.db.models import query, Q
 
 def home(request):
     user = request.user
@@ -72,5 +72,10 @@ class search_term(ListView):
 
     def get_queryset(self):  # new
         query = self.request.GET.get("q")
-        object_list = Term.objects.filter(provenance=query)
+        object_list = Term.objects.filter(
+
+            Q(library_of_congress__icontains=query) | Q(popular_term__icontains=query)
+        )
+
         return object_list
+
