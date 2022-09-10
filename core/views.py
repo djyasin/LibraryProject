@@ -74,7 +74,7 @@ class search_term(ListView):
         query = self.request.GET.get("q")
         object_list = Term.objects.filter(
 
-            Q(library_of_congress__icontains=query) | Q(popular_term__icontains=query)
+            Q(original_term__icontains=query) | Q(preferred_term__icontains=query)
         )
 
         return object_list

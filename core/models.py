@@ -10,7 +10,7 @@ class User(AbstractUser):
         return self.username
 
 class Term(models.Model):
-    library_of_congress = models.CharField(max_length=150)
-    popular_term = models.CharField(max_length=150)
+    original_term = models.CharField(max_length=150)
+    preferred_term = models.CharField(max_length=150)
     provenance = models.CharField(max_length=500)
     created_at = DateTimeField(auto_now_add=True)

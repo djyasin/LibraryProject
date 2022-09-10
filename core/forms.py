@@ -14,8 +14,8 @@ class TermForm(forms.ModelForm):
     class Meta:
         model = Term
         fields = [
-            "library_of_congress",
-            "popular_term",
+            "original_term",
+            "preferred_term",
             "provenance",
         ]
         exclude = ['created_at']

@@ -1,5 +1,5 @@
 {% extends "base.html" %} {} {% block content %}
-<h1 class="subtitle">{{ term.library_of_congress }} -{{ term.popular_term }}</h1>
+<h1 class="subtitle">{{ term.original_term }} -{{ term.preferred_term }}</h1>
 <h4>{{ term.provenance }}</h4>
 <h4><a href="{% url 'term_library' %}"> Term Library</a></h4>
 <p><a href="{% url 'edit_term' pk=term.pk %}"> Edit Term</a></p>
