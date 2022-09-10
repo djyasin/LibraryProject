@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
 {% for term in terms %}
 <div class="column">
-    <h3 class="subtitle">Library of Congress Term: {{term.library_of_congress}} Preferred Term: {{term.provenance}}</h3>
+    <h3 class="subtitle">Original Term: {{term.original_term}} Preferred Term: {{term.provenance}}</h3>
     <h4><a href="{% url 'term_detail' pk=term.pk %}"> Term Details</a></h4>
 </div>
 {% endfor %}
