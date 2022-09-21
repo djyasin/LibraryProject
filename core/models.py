@@ -9,8 +9,15 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+class Tag(models.Model):
+    tag = models.CharField(max_length=50,unique=True)
+
+    def __str__(self):
+        return self.tag
+
 class Term(models.Model):
     original_term = models.CharField(max_length=150)
     preferred_term = models.CharField(max_length=150)
     provenance = models.CharField(max_length=500)
     created_at = DateTimeField(auto_now_add=True)
+    tags = models.ManyToManyField(to=Tag, related_name="terms", blank=True)

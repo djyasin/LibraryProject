@@ -1,5 +1,5 @@
 from django import forms
-from .models import Term, User
+from .models import Tag,Term, User
 from django.contrib.auth.forms import UserCreationForm
 
 class UserForm(UserCreationForm):
@@ -10,6 +10,14 @@ class UserForm(UserCreationForm):
         model = User
         fields = ["username", "password", "email"]
 
+
+class TagForm(forms.ModelForm):
+    class Meta:
+        model = Tag
+        fields = [
+            "tag",
+        ]
+        exclude = ['created_at']
 class TermForm(forms.ModelForm):
     class Meta:
         model = Term
@@ -17,5 +25,10 @@ class TermForm(forms.ModelForm):
             "original_term",
             "preferred_term",
             "provenance",
+            "tags"
         ]
+        tags = forms.ModelMultipleChoiceField(
+            queryset=Tag.objects.all(),
+            widget=forms.CheckboxSelectMultiple
+    )
         exclude = ['created_at']

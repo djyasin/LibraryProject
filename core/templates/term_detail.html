@@ -1,7 +1,14 @@
 {% extends "base.html" %} {} {% block content %}
-<h1 class="subtitle">{{ term.original_term }} -{{ term.preferred_term }}</h1>
-<h4>{{ term.provenance }}</h4>
-<h4><a href="{% url 'term_library' %}"> Term Library</a></h4>
+<h3 class="subtitle">Original Term: {{ term.original_term }} Preferred Term:{{ term.preferred_term }}</h1>
+<h3>Provenance:{{ term.provenance }}</h4>
+
+    <p>Term Tags:</p>
+{% for tag in term.tags.all %}
+<p>  {{ tag }} </p>
+{% endfor %}
+<form action="{% url 'add_tag' %}" method="POST">
+
+<p><a href="{% url 'term_library' %}"> Term Library</a></p>
 <p><a href="{% url 'edit_term' pk=term.pk %}"> Edit Term</a></p>
 <p><a href="{% url 'delete_term' pk=term.pk %}"> Delete Term</a></p>
 {% endblock %}

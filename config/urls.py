@@ -24,9 +24,14 @@ urlpatterns = [
     path('__debug__/', include ('debug_toolbar.urls')),
     path("", terms_views.home, name="home"),
     path('add_term/', terms_views.add_term, name='add_term'),
+    path('add_tag/', terms_views.add_tag, name="add_tag"),
     path('term_detail/<int:pk>', terms_views.term_detail, name="term_detail"),
+    path('tag_detail/<int:pk>', terms_views.tag_detail, name="tag_detail"),
     path('term_library/', terms_views.term_library, name='term_library'),
+    path('tag_list/', terms_views.tag_list, name='tag_list'),
     path("edit_term/<int:pk>/", terms_views.edit_term, name="edit_term"),
+    path("edit_tag/<int:pk>/", terms_views.edit_tag, name="edit_tag"),
     path("delete_term/<int:pk>/", terms_views.delete_term, name="delete_term"),
+    path("delete_tag/<int:pk>/", terms_views.delete_tag, name="delete_tag"),
     path("search/", terms_views.search_term.as_view(), name="search_results")
 ]

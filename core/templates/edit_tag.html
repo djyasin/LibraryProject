@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Edit Tag</h1>
+<div>
+    <form action="{% url 'edit_tag' pk=tag.pk %}" method="POST">
+      {% csrf_token %}
+      <p>Edit Tag: {{ form.tag }}</p>
+      <div>
+        <button type="submit">Submit Changes</button>
+      </div>
+    </form>
+  </div>
+{% endblock content%}
+
