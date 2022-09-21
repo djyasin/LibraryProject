@@ -1,4 +1,5 @@
 {% extends "base.html" %} {% block content %}
+<p><a href="{% url 'add_tag' %}"> Add a Tag</a></p>
 {% for tag in tags %}
     <h3 class="subtitle"> {{ tag }} </h3>
     <h4><a href="{% url 'tag_detail' pk=tag.pk %}"> Tag Details</a></h4>
