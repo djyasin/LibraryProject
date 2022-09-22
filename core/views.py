@@ -44,7 +44,7 @@ def add_term(request):
     if request.method == "POST":
         form = TermForm(data=request.POST)
         if form.is_valid():
-            term = form.save(commit=True)
+            term = form.save(commit=False)
             term.save()
 
             return redirect("term_detail", pk=term.pk)

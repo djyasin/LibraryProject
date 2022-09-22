@@ -8,6 +8,7 @@
        <p>Preferred Term: {{ term.preferred_term }}</p>
        <p>Term Provenance: {{ term.provenance }}</p>
        <p>Date Term Entered: {{ term.created_at }}</p>
+       <a href="/term_detail/{{ term.id }}"> {{ term.original_term }} Details</a>
       </li>
     {% endfor %}
   </ul>
