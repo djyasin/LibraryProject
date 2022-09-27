@@ -5,6 +5,7 @@ from .forms import TermForm, TagForm
 from django.views.generic import TemplateView, ListView
 from django.db.models import query, Q
 
+
 def home(request):
     user = request.user
     terms = Term.objects.filter()
@@ -17,15 +18,20 @@ def home(request):
         },
     )
 
+
 def term_detail(request, pk):
     term = get_object_or_404(Term, pk=pk)
 
     return render(request, "term_detail.html", {"term": term})
 
+
 def tag_detail(request, pk):
     tag = get_object_or_404(Tag, pk=pk)
+    # term = Term.objects.filter(tags__id=pk)
+    terms = tag.terms.all()
 
-    return render(request, "tag_detail.html", {"tag": tag})
+    return render(request, "tag_detail.html", {"tag": tag, "terms": terms})
+
 
 def add_tag(request):
     if request.method == "POST":
@@ -40,6 +46,7 @@ def add_tag(request):
 
     return render(request, "add_tag.html", {"form": form})
 
+
 def add_term(request):
     if request.method == "POST":
         form = TermForm(data=request.POST)
@@ -53,9 +60,10 @@ def add_term(request):
 
     return render(request, "add_term.html", {"form": form})
 
+
 def term_library(request):
     user = request.user
-    terms = Term.objects.filter().order_by('original_term')
+    terms = Term.objects.filter().order_by("original_term")
 
     return render(
         request,
@@ -64,6 +72,7 @@ def term_library(request):
             "terms": terms,
         },
     )
+
 
 def tag_list(request):
     user = request.user
@@ -77,6 +86,7 @@ def tag_list(request):
         },
     )
 
+
 def edit_term(request, pk):
     term = get_object_or_404(Term, pk=pk)
     if request.method == "GET":
@@ -88,6 +98,7 @@ def edit_term(request, pk):
             return redirect("term_detail", pk=term.pk)
 
     return render(request, "edit_term.html", {"form": form, "term": term, "pk": pk})
+
 
 def edit_tag(request, pk):
     tag = get_object_or_404(Tag, pk=pk)
@@ -101,6 +112,7 @@ def edit_tag(request, pk):
 
     return render(request, "edit_tag.html", {"form": form, "tag": tag, "pk": pk})
 
+
 def delete_term(request, pk):
     term = get_object_or_404(Term, pk=pk)
     if request.method == "POST":
@@ -108,22 +120,23 @@ def delete_term(request, pk):
         return redirect(to="term_library")
     return render(request, "delete_term.html", {"term": term})
 
+
 def delete_tag(request, pk):
     tag = get_object_or_404(Tag, pk=pk)
     if request.method == "POST":
         tag.delete()
         return redirect(to="tag_list")
     return render(request, "delete_tag.html", {"tag": tag})
+
+
 class search_term(ListView):
     model = Term
-    template_name = 'search_results.html'
+    template_name = "search_results.html"
 
     def get_queryset(self):  # new
         query = self.request.GET.get("q")
         object_list = Term.objects.filter(
-
             Q(original_term__icontains=query) | Q(preferred_term__icontains=query)
         )
 
         return object_list
-
