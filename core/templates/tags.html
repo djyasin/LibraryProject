@@ -1,0 +1,10 @@
+{% extends "base.html" %} {} {% block content %}
+
+<h3> Tag: {{ tag }} </h3>
+
+{% for term in terms %}
+
+<h3> Term: {{ term.original_term}} </h3>
+
+{% endfor %}
+{%endblock%}

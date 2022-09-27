@@ -32,3 +32,11 @@ class TermForm(forms.ModelForm):
             widget=forms.CheckboxSelectMultiple
     )
         exclude = ['created_at']
+
+class ExploreForm(forms.Form):  
+    query = forms.CharField(  
+    label='',  
+    widget=forms.TextInput(attrs={    
+        'placeholder': 'Explore tags'
+        }) 
+ )
