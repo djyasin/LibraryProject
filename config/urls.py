@@ -29,6 +29,7 @@ urlpatterns = [
     path('tag_detail/<int:pk>', terms_views.tag_detail, name="tag_detail"),
     path('term_library/', terms_views.term_library, name='term_library'),
     path('tag_list/', terms_views.tag_list, name='tag_list'),
+    path('tags/<int:pk>', terms_views.tags, name='tags'),
     path("edit_term/<int:pk>/", terms_views.edit_term, name="edit_term"),
     path("edit_tag/<int:pk>/", terms_views.edit_tag, name="edit_tag"),
     path("delete_term/<int:pk>/", terms_views.delete_term, name="delete_term"),

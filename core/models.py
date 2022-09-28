@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.fields import DateTimeField
 
+
 class User(AbstractUser):
     def __repr__(self):
         return f"<User username={self.username}>"
@@ -9,11 +10,13 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+
 class Tag(models.Model):
-    tag = models.CharField(max_length=50,unique=True)
+    tag = models.CharField(max_length=50, unique=True)
 
     def __str__(self):
         return self.tag
+
 
 class Term(models.Model):
     original_term = models.CharField(max_length=150)
