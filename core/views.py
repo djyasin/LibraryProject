@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Tag, Term, User
 from django.contrib.auth.forms import UserCreationForm
 from .forms import TermForm, TagForm
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, View
 from django.db.models import query, Q
+from django.http import HttpResponseRedirect
 
 
 def home(request):
@@ -128,6 +129,14 @@ def delete_tag(request, pk):
         return redirect(to="tag_list")
     return render(request, "delete_tag.html", {"tag": tag})
 
+
+def tags(request, pk):
+    tag = get_object_or_404(Tag, pk=pk)
+    term = Term.objects.filter(tags__id=pk)
+    terms = tag.terms.all()
+    print(tag)
+
+    return render(request, "tags.html", {"tag": tag, "terms": terms})
 
 class search_term(ListView):
     model = Term
