@@ -1,8 +1,10 @@
 {% extends "base.html" %} {% block content %}
 {% for term in terms %}
 <div class="column">
-    <h3 class="subtitle">Original Term: {{term.original_term}} Preferred Term: {{term.preferred_term}}</h3>
+    <p><b>Original Term:</b> {{term.original_term}}</p>
+    <p><b>Preferred Term:</b> {{term.preferred_term}}</p>
     <h4><a href="{% url 'term_detail' pk=term.pk %}"> Term Details</a></h4>
+    <spacer>
 </div>
 {% endfor %}
 {% endblock %}

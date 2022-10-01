@@ -1,11 +1,11 @@
 {% extends "base.html" %}  {% block content %}
 <h1> Tag Details</h1>
 
-<h3> Tag: {{ tag }} </h3>
+<p><b>Tag:</b>{{ tag }}</p>>
 
 {% for term in terms %}
 
-<h3> Term: {{ term.original_term}} </h3>
+<p><b>Original Term:</b> {{ term.original_term}}</p>
 
 {% endfor %}
 

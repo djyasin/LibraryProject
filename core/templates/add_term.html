@@ -4,10 +4,11 @@
 <div class="form">
   <form action="{% url 'add_term' %}" method="POST">
     {% csrf_token %}
-    <p>Original Term: {{ form.original_term }}</p>
-    <p>Preferred Term: {{ form.preferred_term }}</p>
-    <p>Provenance: {{ form.provenance }}</p>
-    <p>Add Tags: {{form.tags }}</p>
+    <p><b>Original Term:</b> {{ form.original_term }}</p>
+    <p><b>Preferred Term:</b> {{ form.preferred_term }}</p>
+    <p><b>Provenance:</b> {{ form.provenance }}</p>
+    <p><b>Category:</b> {{ form.category }}</p>
+    <p><b>Add Tags: </b>{{ form.tags }}</p>
     <input type="submit" value="Submit" />
       </form>
 

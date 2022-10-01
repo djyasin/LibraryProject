@@ -1,12 +1,17 @@
 {% extends "base.html" %} {} {% block content %}
-<h3 class="subtitle">Original Term: {{ term.original_term }} Preferred Term:{{ term.preferred_term }}</h1>
-<h3>Provenance:{{ term.provenance }}</h4>
+<p><b>Original Term:</b> {{ term.original_term }}</p>
+<p><b>Preferred Term:</b>{{ term.preferred_term }}</p> 
+<p><b>Provenance:</b>{{ term.provenance }}</p>
+<p><b>Category:</b> {{ term.category }} </p>
+<p><b>Date Entered:</b>{{ term.created_at}}</p>
 
-    <p>Term Tags:</p>
-{% for tag in term.tags.all %}
-<p> <a href="{% url 'tags' pk=tag.pk%}"> {{ tag }} </a></p>
-{% endfor %}
-<form action="{% url 'add_tag' %}" method="POST">
+<div>
+    <p><b>Term Tags:</b></p>
+    {% for tag in term.tags.all %}
+    <p> <a href="{% url 'tags' pk=tag.pk%}"> {{ tag }} </a></p>
+    {% endfor %}
+    <form action="{% url 'add_tag' %}" method="POST">
+</div>
 
 <p><a href="{% url 'term_library' %}"> Term Library</a></p>
 <p><a href="{% url 'edit_term' pk=term.pk %}"> Edit Term</a></p>
