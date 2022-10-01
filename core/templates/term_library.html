@@ -3,8 +3,8 @@
 <div class="column">
     <p><b>Original Term:</b> {{term.original_term}}</p>
     <p><b>Preferred Term:</b> {{term.preferred_term}}</p>
-    <h4><a href="{% url 'term_detail' pk=term.pk %}"> Term Details</a></h4>
-    <spacer>
+    <p><a href="{% url 'term_detail' pk=term.pk %}"> Term Details</a></p>
+
 </div>
 {% endfor %}
 {% endblock %}
