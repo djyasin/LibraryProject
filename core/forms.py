@@ -25,6 +25,8 @@ class TermForm(forms.ModelForm):
             "original_term",
             "preferred_term",
             "provenance",
+            "category",
+            "created_at",
             "tags"
         ]
         tags = forms.ModelMultipleChoiceField(

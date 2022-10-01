@@ -1,12 +1,12 @@
 {% extends "base.html" %} {} {% block content %}
 
-<h3> Tag: {{ tag }} </h3>
+<p> <b>Tag: </b>{{ tag }} <p>
 
 {% for term in terms %}
 
-<h3> 
-    <p> <a href="{% url 'term_detail' pk=term.pk%}"> Term: {{ term.original_term}}  </a></p>
-</h3>
+ 
+    <p> <a href="{% url 'term_detail' pk=term.pk%}"> <b>Original Term:</b> {{ term.original_term}}  </a></p>
+
 
 {% endfor %}
 {%endblock%}
