@@ -1,15 +1,17 @@
 {% extends "base.html" %} {% block content %}
 
-<h1>Search Results</h1>
+<h1>Search Results:</h1>
 <ul>
-    {% for term in object_list %}
-      <li>
-      <p><b>Original Term: </b> {{ term.original_term }} </p>  
-       <p><b>Preferred Term: </b>{{ term.preferred_term }}</p>
-       <p><b>Term Provenance: </b>{{ term.provenance }}</p>
-       <p><b>Date Term Entered: </b> {{ term.created_at }}</p>
-       <a href="/term_detail/{{ term.id }}"> <b>{{ term.original_term }} </b>Details</a>
-      </li>
-    {% endfor %}
+  {% for term in object_list %}
+    <li>
+    <p><b>Original Term: </b> {{ term.original_term }} </p>  
+      <p><b>Preferred Term: </b>{{ term.preferred_term }}</p>
+      <p><b>Term Provenance: </b>{{ term.provenance }}</p>
+      <p><b>Date Term Entered: </b> {{ term.created_at }}</p>
+      <a href="/term_detail/{{ term.id }}"> <b>{{ term.original_term }} </b>Details</a>
+    </li>
+  {% empty %}
+    <p>No results. Please try refining your search or visit our <a href="{% url 'term_library' %}">Term Library.</a></p>
+  {% endfor %}
   </ul>
   {% endblock content %}
