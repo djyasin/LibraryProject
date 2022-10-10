@@ -1,19 +1,21 @@
 {% extends "base.html" %} {} {% block content %}
-<p><b>Original Term:</b> {{ term.original_term }}</p>
-<p><b>Preferred Term:</b>{{ term.preferred_term }}</p> 
-<p><b>Provenance:</b>{{ term.provenance }}</p>
-<p><b>Category:</b> {{ term.category }} </p>
-<p><b>Date Entered:</b>{{ term.created_at}}</p>
+<p><b>Original Term: </b> {{ term.original_term }}</p>
+<p><b>Preferred Term: </b>{{ term.preferred_term }}</p> 
+<p><b>Provenance: </b>{{ term.provenance }}</p>
+<p><b>Category: </b> {{ term.category }} </p>
+<p><b>Date Entered: </b>{{ term.created_at}}</p>
 
 <div>
     <p><b>Term Tags:</b></p>
     {% for tag in term.tags.all %}
-    <p> <a href="{% url 'tags' pk=tag.pk%}"> {{ tag }} </a></p>
+    <ul> <p> <a href="{% url 'tags' pk=tag.pk%}"> {{ tag }} </a></p></ul>
+   
     {% endfor %}
     <form action="{% url 'add_tag' %}" method="POST">
 </div>
 
 <p><a href="{% url 'term_library' %}"> Term Library</a></p>
+<p><a href="{% url 'add_term' %}"> Add a Term</a></p>
 <p><a href="{% url 'edit_term' pk=term.pk %}"> Edit Term</a></p>
 <p><a href="{% url 'delete_term' pk=term.pk %}"> Delete Term</a></p>
 {% endblock %}

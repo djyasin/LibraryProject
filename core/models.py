@@ -26,3 +26,6 @@ class Term(models.Model):
     category = models.CharField(max_length=150, blank=True)
     created_at = DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField(to=Tag, related_name="terms", blank=True)
+
+    def __str__(self):
+        return self.original_term

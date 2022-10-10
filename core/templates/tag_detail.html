@@ -8,8 +8,8 @@
 <p><b>Original Term:</b> {{ term.original_term}}</p>
 
 {% endfor %}
-
 <p><a href="{% url 'tag_list' %}"> Tag List</a></p>
+<p><a href="{% url 'add_tag' %}"> Add a Tag</a></p>
 <p><a href="{% url 'edit_tag' pk=tag.pk %}"> Edit Tag</a></p>
 <p><a href="{% url 'delete_tag' pk=tag.pk %}"> Delete Tag</a></p>
 {% endblock %}
