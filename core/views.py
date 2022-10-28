@@ -47,7 +47,6 @@ def add_tag(request):
 
     return render(request, "add_tag.html", {"form": form})
 
-
 def add_term(request):
     if request.method == "POST":
         form = TermForm(data=request.POST)
