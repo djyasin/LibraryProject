@@ -1,14 +1,12 @@
 from django import forms
 from .models import Tag,Term, User
 from django.contrib.auth.forms import UserCreationForm
-
+from django.contrib.auth import get_user_model
 class UserForm(UserCreationForm):
-    name = forms.CharField(max_length=100, help_text="Name")
-    email = forms.EmailField(max_length=100, help_text="Email Address")
 
     class Meta:
         model = User
-        fields = ["username", "password", "email"]
+        fields = ["username", "email"]
 
 
 class TagForm(forms.ModelForm):
