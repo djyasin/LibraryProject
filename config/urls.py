@@ -34,5 +34,6 @@ urlpatterns = [
     path("edit_tag/<int:pk>/", terms_views.edit_tag, name="edit_tag"),
     path("delete_term/<int:pk>/", terms_views.delete_term, name="delete_term"),
     path("delete_tag/<int:pk>/", terms_views.delete_tag, name="delete_tag"),
-    path("search/", terms_views.search_term.as_view(), name="search_results")
+    path("search/", terms_views.search_term.as_view(), name="search_results"),
+    path(r"^accounts/", include("django.contrib.auth.urls")),
 ]

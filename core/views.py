@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Tag, Term, User
 from django.contrib.auth.forms import UserCreationForm
-from .forms import TermForm, TagForm
+from .forms import TermForm, TagForm, UserForm
 from django.views.generic import TemplateView, ListView, View
 from django.db.models import query, Q
 from django.http import HttpResponseRedirect
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
 
 
 def home(request):
@@ -19,6 +23,25 @@ def home(request):
         },
     )
 
+
+# def register_request(request):
+#     form = UserForm
+#     success_url = reverse_lazy("login")
+#     template_name = "registration/register.html"
+#     return render(request, "registration/register.html", {"form": form})
+
+def register_request(request):
+    if request.method == "POST":
+        form = UserForm(data=request.POST)
+        if form.is_valid():
+            term = form.save(commit=True)
+            term.save()
+
+            return redirect('login')
+    else:
+        form = UserForm()
+
+    return render(request, "registration/register.html", {"form": form})
 
 def term_detail(request, pk):
     term = get_object_or_404(Term, pk=pk)

@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
+Hello, {{ user.username|default:'Guest' }}!
 
+<div>
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+</div>
 <body>
 <h4><a href="{% url 'add_term' %}"> Add a Term</a></h4>
 <h4><a href="{% url 'term_library' %}"> View Term Library</a></h4>
