@@ -7,8 +7,7 @@ from django.db.models import query, Q
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy
-from django.views import generic
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -22,13 +21,6 @@ def home(request):
             "terms": terms,
         },
     )
-
-
-# def register_request(request):
-#     form = UserForm
-#     success_url = reverse_lazy("login")
-#     template_name = "registration/register.html"
-#     return render(request, "registration/register.html", {"form": form})
 
 def register_request(request):
     if request.method == "POST":
@@ -56,7 +48,7 @@ def tag_detail(request, pk):
 
     return render(request, "tag_detail.html", {"tag": tag, "terms": terms})
 
-
+@login_required
 def add_tag(request):
     if request.method == "POST":
         form = TagForm(data=request.POST)
@@ -70,7 +62,7 @@ def add_tag(request):
 
     return render(request, "add_tag.html", {"form": form})
 
-
+@login_required
 def add_term(request):
     if request.method == "POST":
         form = TermForm(data=request.POST)
@@ -110,7 +102,7 @@ def tag_list(request):
         },
     )
 
-
+@login_required
 def edit_term(request, pk):
     term = get_object_or_404(Term, pk=pk)
     if request.method == "GET":
@@ -123,7 +115,7 @@ def edit_term(request, pk):
 
     return render(request, "edit_term.html", {"form": form, "term": term, "pk": pk})
 
-
+@login_required
 def edit_tag(request, pk):
     tag = get_object_or_404(Tag, pk=pk)
     if request.method == "GET":
@@ -136,7 +128,7 @@ def edit_tag(request, pk):
 
     return render(request, "edit_tag.html", {"form": form, "tag": tag, "pk": pk})
 
-
+@login_required
 def delete_term(request, pk):
     term = get_object_or_404(Term, pk=pk)
     if request.method == "POST":
@@ -144,7 +136,7 @@ def delete_term(request, pk):
         return redirect(to="term_library")
     return render(request, "delete_term.html", {"term": term})
 
-
+@login_required
 def delete_tag(request, pk):
     tag = get_object_or_404(Tag, pk=pk)
     if request.method == "POST":
